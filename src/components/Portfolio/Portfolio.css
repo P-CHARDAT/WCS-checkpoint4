@@ -1,0 +1,108 @@
+.projet-uni {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-projets {
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.Pres-container {
+  position: relative;
+  display: flex;
+  z-index: 2;
+  width: 100%;
+}
+.Pres-container a {
+  font-size: calc(16px + 2vmin);
+  font-weight: 800;
+}
+.Pres-container h1 {
+  position: relative;
+  color: hsl(35, 100%, 100%);
+  font-size: calc(16px + 1.5vmin);
+  font-weight: 600;
+  letter-spacing: 0.1vmin;
+  margin-bottom: 40px;
+  margin-right: auto;
+  margin-left: 0;
+}
+.Pres-container h1::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: -10px;
+  width: 25%;
+  height: 4px;
+  background: hsl(35, 100%, 100%);
+}
+
+.Pres-container ul {
+  position: relative;
+  list-style: none;
+  margin: auto 2rem auto auto;
+  display: flex;
+  width: 100%;
+  height: fit-content;
+}
+.Pres-container li {
+  padding: 2rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: calc(10px + 1vmin);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+/* .Pres-container li:hover {
+  transform: translateY(20px);
+} */
+.Pres-container li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: skewX(45deg) translateX(170%);
+  transition: 0.3s;
+}
+.Pres-container li:hover:before {
+  transform: skewx(45deg) translateX(-170%);
+}
+
+@media screen and (min-width: 1040px) {
+  .Pres-container ul {
+    position: relative;
+    list-style: none;
+    margin: auto;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+  }
+  .Pres-container li:before {
+    transform: skewX(45deg) translateX(150%);
+  }
+  .Pres-container li:hover:before {
+    transform: skewx(45deg) translateX(-150%);
+  }
+}

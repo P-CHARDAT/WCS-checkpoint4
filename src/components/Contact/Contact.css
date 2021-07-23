@@ -1,0 +1,225 @@
+.box {
+  position: relative;
+  height: 100%;
+}
+.box .cube {
+  position: absolute;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  animation: animate 10s linear infinite;
+  /* Ajout de l'effet reflet vitre */
+  transition: 0.5s;
+  overflow: hidden;
+  color: #fff;
+}
+
+.box .cube::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: skewX(45deg) translateX(170%);
+  transition: 0.3s;
+}
+.box .cube:hover:before {
+  transform: skewx(45deg) translateX(-170%);
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    transform: translateY(-40px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-20px) translateX(20px);
+  }
+  50% {
+    transform: translateY(40px) translateX(10px);
+  }
+  75% {
+    transform: translateY(60px) translateX(-10px);
+  }
+}
+.box .cube:nth-child(1) {
+  top: -50px;
+  right: -60px;
+  width: 100px;
+  height: 100px;
+  animation-delay: calc(-1s * 0);
+}
+.box .cube:nth-child(2) {
+  top: 150px;
+  left: -100px;
+  width: 120px;
+  height: 120px;
+  z-index: 2;
+  animation-delay: calc(-1s * 1);
+}
+.box .cube:nth-child(3) {
+  bottom: 50px;
+  right: -60px;
+  width: 80px;
+  height: 80px;
+  z-index: 2;
+  animation-delay: calc(-1s * 2);
+}
+.box .cube:nth-child(4) {
+  bottom: -80px;
+  left: 100px;
+  width: 50px;
+  height: 50px;
+  animation-delay: calc(-1s * 3);
+}
+.box .cube:nth-child(5) {
+  top: -80px;
+  left: 140px;
+  width: 60px;
+  height: 60px;
+  animation-delay: calc(-1s * 4);
+}
+.box .cube:nth-child(6) {
+  bottom: -210px;
+  left: 300px;
+  width: 80px;
+  height: 80px;
+  animation-delay: calc(-1s * 5);
+}
+.box .cube:nth-child(7) {
+  bottom: -200px;
+  right: 250px;
+  width: 95px;
+  height: 95px;
+  animation-delay: calc(-1s * 8);
+}
+.box .cube:nth-child(8) {
+  bottom: -180px;
+  left: 600px;
+  width: 90px;
+  height: 90px;
+  animation-delay: calc(-1s * 11);
+}
+.box .cube:nth-child(6):hover {
+  box-shadow: 0px 5px 15px hsl(55, 60%, 90%);
+}
+.box .cube:nth-child(7):hover {
+  box-shadow: 0px 5px 15px hsl(55, 60%, 90%);
+}
+.box .cube:nth-child(8):hover {
+  box-shadow: 0px 5px 15px hsl(55, 60%, 90%);
+}
+
+.contact-container {
+  position: relative;
+  width: 400px;
+  min-height: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.form-contact-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+}
+.form-contact-wrapper h2 {
+  position: relative;
+  color: hsl(35, 100%, 100%);
+  font-size: calc(16px + 1.5vmin);
+  font-weight: 600;
+  letter-spacing: 0.1vmin;
+  margin-bottom: 40px;
+  margin-right: 23%;
+}
+.form-contact-wrapper h2::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: -10px;
+  width: 80px;
+  height: 4px;
+  background: hsl(35, 100%, 100%);
+}
+.form-contact-wrapper .inputBox {
+  width: 100%;
+  margin-top: 20px;
+}
+.form-contact-wrapper .inputBox input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: calc(16px + 1vmin);
+  letter-spacing: 0.1vmin;
+  color: hsl(35, 100%, 100%);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease-in-out;
+}
+.inputBox input:hover {
+  box-shadow: 0px 5px 15px hsl(55, 60%, 90%);
+  font-size: calc(20px + 1vmin);
+}
+.inputBox input[type="submit"]:hover {
+  font-size: calc(16px + 1vmin);
+}
+.form-contact-wrapper .inputBox input::placeholder {
+  color: hsl(35, 100%, 100%);
+}
+.form-contact-wrapper .inputBox input[type="submit"] {
+  background: hsl(35, 100%, 100%);
+  color: #666;
+  max-width: 50%;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: 600;
+  margin-right: 50%;
+}
+@media only screen and (max-width: 600px) {
+  .contact-container {
+    width: 80%;
+    margin: auto;
+  }
+  .form-contact-wrapper {
+    padding: 20px;
+  }
+  .inputBox input:focus {
+    box-shadow: 0px 5px 15px hsl(55, 60%, 90%);
+    font-size: calc(20px + 1vmin);
+  }
+  .inputBox input[type="submit"]:active {
+    font-size: calc(16px + 1vmin);
+    box-shadow: 0px 5px 15px hsl(55, 60%, 90%);
+  }
+  .inputBox input[type="submit"] {
+    transition: 0.1s ease-in-out;
+  }
+
+  .box .cube:nth-child(6) {
+    bottom: -100px;
+    left: 80px;
+  }
+  .box .cube:nth-child(7) {
+    bottom: -110px;
+    right: 90px;
+  }
+}
