@@ -1,2 +1,2 @@
 # WCS-checkpoint4
-Checkpoint 4 of my Wild code school's formation
+Front of my checkpoint 4 project from my WCS formation
