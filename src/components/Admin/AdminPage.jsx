@@ -91,7 +91,9 @@ export default function AdminPage() {
         <div className="cube"></div>
         <div className="cube"></div>
         <div className="cube"></div>
+
         <div className="cube"></div>
+
         <div className="cube"></div>
         <div className="Admin-container-create-project">
           <div className="form-contact-wrapper">
@@ -114,10 +116,10 @@ export default function AdminPage() {
               {() => {
                 return (
                   <Form>
-                    <div className="form-contact">
-                      {/* Début modif pour multer */}
-                      {/* second Test */}
-                      {/* <label htmlFor="Nom du pôle">
+                    {/* <div className="form-contact"> */}
+                    {/* Début modif pour multer */}
+                    {/* second Test */}
+                    {/* <label htmlFor="Nom du pôle">
                         Nom de l'image
                         <input
                           type="text"
@@ -134,8 +136,8 @@ export default function AdminPage() {
                           onChange={onChangeFile}
                         ></input>
                       </label> */}
-                      {/* fin second test */}
-                      {/* <input
+                    {/* fin second test */}
+                    {/* <input
                         type="file"
                         accept="image/*"
                         id="multer"
@@ -165,52 +167,53 @@ export default function AdminPage() {
                           />
                         </label>
                       </div> */}
+                    {/* fin de modif pour multer  */}
+                    <label htmlFor="title" className="inputBox1">
+                      <div className="espace">Titre:</div>
+                      <Field name="title" id="title" />
+                      <ErrorMessage name="title" component="div" />
+                    </label>
+                    <label htmlFor="link" className="inputBox1">
+                      <div className="espace">Lien:</div>
+                      <Field name="link" id="link" />
+                      <ErrorMessage name="link" component="div" />
+                    </label>
 
-                      {/* fin de modif pour multer  */}
-                      <label htmlFor="title" className="inputBox">
-                        Titre:
-                        <Field name="title" id="title" />
-                        <ErrorMessage name="title" component="div" />
-                      </label>
-                      <label htmlFor="link" className="inputBox">
-                        Lien:
-                        <Field name="link" id="link" />
-                        <ErrorMessage name="link" component="div" />
-                      </label>
-
-                      <label htmlFor="description" className="inputBox">
-                        Description:
-                        <Field name="description" id="description" />
-                        <ErrorMessage name="description" component="div" />
-                      </label>
-                      <label htmlFor="type" className="inputBox">
+                    <label htmlFor="description" className="inputBox1">
+                      <div className="espace">Description:</div>
+                      <Field name="description" id="description" />
+                      <ErrorMessage name="description" component="div" />
+                    </label>
+                    <label htmlFor="type" className="inputBox1">
+                      <div className="espace">
                         En ligne ou en développement:
-                        <Field name="type" id="type" className="inputBox" />
-                        <ErrorMessage name="type" component="div" />
-                      </label>
-                      <label htmlFor="technos" className="inputBox">
-                        Technos utilisées:
-                        <Field
-                          name="technos"
-                          id="technos"
-                          className="inputBox"
-                        />
-                        <ErrorMessage name="technos" component="div" />
-                      </label>
-                      <label htmlFor="date" className="inputBox">
-                        date:
-                        <Field name="date" id="date" />
-                        <ErrorMessage name="date" component="div" />
-                      </label>
-                      <label htmlFor="img_src" className="inputBox">
-                        Image sous forme de lien:
-                        <Field name="img_src" id="img_src" />
-                        <ErrorMessage name="img_src" component="div" />
-                      </label>
-                      <div className="inputBox">
-                        <input type="submit" value="Créer" />
                       </div>
+                      <Field name="type" id="type" className="inputBox1" />
+                      <ErrorMessage name="type" component="div" />
+                    </label>
+                    <label htmlFor="technos" className="inputBox1">
+                      <div className="espace">Technos utilisées:</div>
+                      <Field
+                        name="technos"
+                        id="technos"
+                        className="inputBox1"
+                      />
+                      <ErrorMessage name="technos" component="div" />
+                    </label>
+                    <label htmlFor="date" className="inputBox1">
+                      <div className="espace">date:</div>
+                      <Field name="date" id="date" />
+                      <ErrorMessage name="date" component="div" />
+                    </label>
+                    <label htmlFor="img_src" className="inputBox1">
+                      <div className="espace">Image sous forme de lien:</div>
+                      <Field name="img_src" id="img_src" />
+                      <ErrorMessage name="img_src" component="div" />
+                    </label>
+                    <div className="inputBox1">
+                      <input type="submit" value="Créer" />
                     </div>
+                    {/* </div> */}
                   </Form>
                 );
               }}
@@ -218,7 +221,7 @@ export default function AdminPage() {
           </div>
         </div>
       </section>
-{/* 
+      {/* 
       <div>
         {projets.map((projet, index) => (
           <li key={[index]}>

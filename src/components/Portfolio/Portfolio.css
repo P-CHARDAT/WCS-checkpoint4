@@ -1,3 +1,13 @@
+.container-portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+}
 .projet-uni {
   margin: 1rem;
   display: flex;
@@ -8,6 +18,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: auto;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 .container-projets {
   margin: 1rem;
@@ -104,5 +117,14 @@
   }
   .Pres-container li:hover:before {
     transform: skewx(45deg) translateX(-150%);
+  }
+  .container-projets {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 1290px) {
+  .container-projets {
+    flex-direction: column;
   }
 }

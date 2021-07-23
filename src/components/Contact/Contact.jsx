@@ -32,7 +32,7 @@ export default function Contact() {
   };
 
   return (
-    <>
+    <div className="container-page-contact">
       <section className="box">
         <div className="cube"></div>
         <div className="cube"></div>
@@ -82,6 +82,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

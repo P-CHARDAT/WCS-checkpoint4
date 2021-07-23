@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./AdminProjetsInfo.css";
 
 export default function AdminProjetsInfo({
   id,
@@ -30,7 +31,7 @@ export default function AdminProjetsInfo({
   };
 
   return (
-    <section className="box">
+    <section className="box1">
       <div className="cube"></div>
       <div className="cube"></div>
       <div className="cube"></div>

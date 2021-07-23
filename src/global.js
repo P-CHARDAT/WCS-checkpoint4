@@ -14,12 +14,11 @@ export const GlobalStyles = createGlobalStyle`
     align-items: center;
     background: ${({ theme }) => theme.primaryColor};
     background-size: 400% 400%;
-    animation: gradient 5s ease-in-out infinite;
+    animation: gradient 30s ease-in-out infinite;
     color: ${({ theme }) => theme.primaryLight};
-    height: 100vh;
+    height: 100%;
     text-rendering: optimizeLegibility;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    overflow: hidden; 
   }
   @keyframes gradient {
     0%, 100% {
@@ -46,4 +45,6 @@ export const GlobalStyles = createGlobalStyle`
   a:hover {
     color: ${({ theme }) => theme.primaryLight};
   }
+
+}
 `;
