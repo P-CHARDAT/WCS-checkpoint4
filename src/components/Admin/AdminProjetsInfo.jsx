@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./AdminProjetsInfo.css";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export default function AdminProjetsInfo({
   id,
@@ -15,13 +16,13 @@ export default function AdminProjetsInfo({
   role,
 }) {
   const deleteProjet = () => {
-    if (window.confirm("Are you sure you want to delete this user ?")) {
+    if (window.confirm("Veux-tu vraiment supprimer ce projet, Pierre ?")) {
       axios({
         method: "DELETE",
         url: `http://localhost:8000/api/projets/${id}`,
       })
         .then(() => {
-          alert("User deleted");
+          alert("Projet supprimé");
           getProjets();
         })
         .catch((err) => {
@@ -52,7 +53,7 @@ export default function AdminProjetsInfo({
             <p>{technos}</p>
           </div>
           <div className="inputBox">
-            <img src={img_src} alt={title} />
+            <img src={`${API_BASE_URL}/images/${img_src}`} alt={title} />
           </div>
           {role === "admin" && (
             <button type="button" onClick={deleteProjet}>

@@ -2,27 +2,29 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { object, string } from "yup";
-import AdminProjetsInfo from "./AdminProjetsInfo";
-// import cameraPhoto from "../Image/cameraPhoto.jpg";
 import "./AdminPage.css";
+// import AdminProjetsInfo from "./AdminProjetsInfo";
+
+// import cameraPhoto from "../Image/cameraPhoto.jpg";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export default function AdminPage() {
   // state permettant le stockage et envoie dans le back de notre image
-  // const [fileSelected, setFileSelected] = useState("");
-  // const [file, setFile] = useState("");
+  const [fileSelected, setFileSelected] = useState("");
+  const [file, setFile] = useState("");
   // const [name, setName] = useState("");
   // const [projets, setProjets] = useState([]);
 
   // Permet de stocker l'image(src) dans un state avant envoie dans le back
 
-  // const onChangeFile = (event) => {
-  //   const { type } = event.target.files[0];
-  //   if (type !== "image/png" && type !== "image/jpeg") {
-  //     alert("Veuillez sellectioner une image .jpeg, .jpg ou png");
-  //   } else {
-  //     setFileSelected(event.target.files[0]);
-  //   }
-  // };
+  const onChangeFile = (event) => {
+    const { type } = event.target.files[0];
+    if (type !== "image/png" && type !== "image/jpeg") {
+      alert("Veuillez sellectioner une image .jpeg, .jpg ou png");
+    } else {
+      setFileSelected(event.target.files[0]);
+    }
+  };
 
   // Vérification des données avant de les envoyer
   const UserValidation = object().shape({
@@ -32,37 +34,49 @@ export default function AdminPage() {
     type: string(),
     technos: string(),
     date: string(),
-    img_src: string(),
+    // img_src: string(),
   });
 
   // Fonction permettant de créer un projet
   const handleSubmit = async (values, { resetForm }) => {
-    // if (fileSelected) {
-    //   const data = new FormData();
-    //   data.append("file", fileSelected);
-    //   data.append("configuration", JSON.stringify({ alt: name }));
-    //   console.log(data, "data de image here");
-    //   console.log(data.file, "data.file ici !");
-    const projectToCreate = { ...values };
-    console.log(projectToCreate);
-    await axios({
-      method: "POST",
-      url: "http://localhost:8000/api/projets",
-      withCredentials: true,
-      data: projectToCreate,
-      // data: { data, projectToCreate },
-      // data: projectToCreate,
-    })
-      .then((data) => {
-        console.log(data, "data res de création projet");
-        // setFile({ filename: data.data.img_src });
-        resetForm({ values: "" });
-        alert("Projet créé avec succès");
+    if (fileSelected) {
+      const projectToCreate = { ...values };
+      const data = new FormData();
+      data.append("file", fileSelected);
+      data.append(
+        "configuration",
+        JSON.stringify({
+          title: projectToCreate.title,
+          link: projectToCreate.link,
+          description: projectToCreate.description,
+          type: projectToCreate.type,
+          technos: projectToCreate.technos,
+          date: projectToCreate.date,
+        })
+      );
+      console.log(data, "data de image here");
+      console.log(data.file, "data.file ici !");
+      console.log(projectToCreate);
+      // data = { data, projectToCreate };
+
+      await axios({
+        method: "POST",
+        url: "http://localhost:8000/api/projets",
+        withCredentials: true,
+        data,
+        // data: projectToCreate,
+        // data: projectToCreate,
       })
-      .catch((err) => {
-        alert(err);
-      });
-    // }
+        .then((data) => {
+          console.log(data, "data res de création projet");
+          alert("Projet créé avec succès");
+          setFile({ filename: data.data.img_src });
+          resetForm({ values: "" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
     // return alert("il te faut une image Pierre !");
   };
 
@@ -108,7 +122,7 @@ export default function AdminPage() {
                 type: "",
                 technos: "",
                 date: "",
-                img_src: "",
+                // img_src: "",
               }}
               onSubmit={handleSubmit}
               validationSchema={UserValidation}
@@ -137,36 +151,36 @@ export default function AdminPage() {
                         ></input>
                       </label> */}
                     {/* fin second test */}
-                    {/* <input
-                        type="file"
-                        accept="image/*"
-                        id="multer"
-                        onChange={onChangeFile}
-                      />
-                      <div className="container__imgprofil">
-                        {!file && (
-                          <img
-                            src={require("../Image/cameraPhoto.jpg")}
-                            alt="test"
-                            id="img__multer"
-                            style={{ width: 10 + "vm" }}
-                          />
-                        )}
-                        {file && (
-                          <img
-                            src={`http://localhost:8000/images/${file.filename}`}
-                            alt="test"
-                            id="img__multer"
-                          />
-                        )}
-                        <label htmlFor="multer">
-                          <img
-                            src="../Image/cameraPhoto.jpg"
-                            alt="selection_image"
-                            id="imgPhoto"
-                          />
-                        </label>
-                      </div> */}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="multer"
+                      onChange={onChangeFile}
+                    />
+                    <div className="container__imgprofil">
+                      {!file && (
+                        <img
+                          src={require("../Image/cameraPhoto.jpg")}
+                          alt="test"
+                          id="img__multer"
+                          style={{ width: 10 + "vm" }}
+                        />
+                      )}
+                      {file && (
+                        <img
+                          src={`${API_BASE_URL}/images/${file.filename}`}
+                          alt="test"
+                          id="img__multer"
+                        />
+                      )}
+                      <label htmlFor="multer">
+                        <img
+                          src="./assets/cameraPhoto.jpg"
+                          alt="selection_image"
+                          id="imgPhoto"
+                        />
+                      </label>
+                    </div>
                     {/* fin de modif pour multer  */}
                     <label htmlFor="title" className="inputBox1">
                       <div className="espace">Titre:</div>
@@ -205,11 +219,11 @@ export default function AdminPage() {
                       <Field name="date" id="date" />
                       <ErrorMessage name="date" component="div" />
                     </label>
-                    <label htmlFor="img_src" className="inputBox1">
+                    {/* <label htmlFor="img_src" className="inputBox1">
                       <div className="espace">Image sous forme de lien:</div>
                       <Field name="img_src" id="img_src" />
                       <ErrorMessage name="img_src" component="div" />
-                    </label>
+                    </label> */}
                     <div className="inputBox1">
                       <input type="submit" value="Créer" />
                     </div>
